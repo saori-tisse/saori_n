@@ -1,0 +1,27 @@
+@import "inc/mixin";
+@import "inc/baseinfo";
+
+//
+// TOP Page
+//
+// --INDEX
+//
+
+.top{
+  &__contents{
+  }
+
+  &__copy{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+
+  &__title{
+    font-size: 6rem;
+    font-weight: bold;
+    color: $color-main;
+  }
+}

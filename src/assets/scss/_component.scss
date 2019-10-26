@@ -1,0 +1,15 @@
+@import "inc/mixin";
+@import "inc/baseinfo";
+
+//
+// INDEX
+//
+//
+
+.flex{
+  display: flex;
+
+  &.-justifyCenter{
+    justify-content: center;
+  }
+}

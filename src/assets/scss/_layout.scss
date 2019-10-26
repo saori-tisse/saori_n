@@ -1,9 +1,23 @@
 
+@import "inc/mixin";
+@import "inc/baseinfo";
+
 
 /*
 2.1 - header
 -----------------------------------------------------*/
+.header{
+  padding: 1.5rem 0;
 
+}
+.globalnav{
+  &__list{
+    li{
+      margin-right: 1em;
+      &:last-child{margin-right: 0;}
+    }
+  }
+}
 
 /*
 2.2 -footer
@@ -13,3 +27,10 @@
 /*
 2.3 - main
 -----------------------------------------------------*/
+.tabContens{
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  // background: #bbbbbb;
+  // overflow: scroll;
+}

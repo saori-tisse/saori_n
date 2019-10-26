@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "three": "^0.109.0",
     "webpack-dev-server": "^3.8.0"
   },
   "devDependencies": {
@@ -28,8 +29,9 @@
     "gulp-uglify": "^3.0.2",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-stream": "^5.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

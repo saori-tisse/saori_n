@@ -1,30 +1,35 @@
 /*
   gulpプラグインの読み込み
 --------------------------------- */
-var gulp = require('gulp');
-var sass = require('gulp-sass'); //Sassコンパイル
-var plumber = require('gulp-plumber'); //エラー時の強制終了を防止
-var notify = require('gulp-notify'); //エラー発生時にデスクトップ通知する
-var sassGlob = require('gulp-sass-glob'); //@importの記述を簡潔にする
-var browserSync = require('browser-sync'); //ブラウザ反映
-var postcss = require('gulp-postcss'); //autoprefixerとセット
-var autoprefixer = require('autoprefixer'); //ベンダープレフィックス付与
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var mozjpeg = require('imagemin-mozjpeg');
-var ejs = require("gulp-ejs");
-var rename = require("gulp-rename"); //.ejsの拡張子を変更
-var mmq = require("gulp-merge-media-queries");
+const gulp = require('gulp');
+const sass = require('gulp-sass'); //Sassコンパイル
+const plumber = require('gulp-plumber'); //エラー時の強制終了を防止
+const notify = require('gulp-notify'); //エラー発生時にデスクトップ通知する
+const sassGlob = require('gulp-sass-glob'); //@importの記述を簡潔にする
+const browserSync = require('browser-sync'); //ブラウザ反映
+const postcss = require('gulp-postcss'); //autoprefixerとセット
+const autoprefixer = require('autoprefixer'); //ベンダープレフィックス付与
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
+const mozjpeg = require('imagemin-mozjpeg');
+const ejs = require("gulp-ejs");
+const rename = require("gulp-rename"); //.ejsの拡張子を変更
+const mmq = require("gulp-merge-media-queries");
 const cssmin = require('gulp-cssmin');
 const uglify = require("gulp-uglify");
 const changed = require('gulp-changed');
+const webpackStream = require("webpack-stream");
+const webpack = require("webpack");
+
+// webpackの設定ファイルの読み込み
+const webpackConfig = require("./webpack.config");
 
 /*
   ディレクトリ設定
 --------------------------------- */
-var paths = {
+const paths = {
   srcDir: 'src',
-  dstDir: 'dist',
+  dstDir: '',
   assetDir: '/assets'
 }
 
@@ -59,7 +64,7 @@ gulp.task('sass', function () {
 /*
   browser sync
 --------------------------------- */
-gulp.task('browser-sync', function (done) {
+gulp.task('browser-sync', (done) => {
   browserSync.init({
 
     //ローカル開発
@@ -71,7 +76,7 @@ gulp.task('browser-sync', function (done) {
   done();
 });
 
-gulp.task('reload', function (done) {
+gulp.task('reload', (done) => {
   browserSync.reload();
   done();
 });
@@ -88,6 +93,16 @@ gulp.task("ejs", (done) => {
     .pipe(gulp.dest(paths.srcDir)); //出力先
   done();
 });
+
+/*
+  webpack
+--------------------------------- */
+gulp.task('bundle', (done) => {
+  webpackStream(webpackConfig, webpack)
+    .pipe(gulp.dest(paths.srcDir + paths.assetDir + '/js'));
+  done();
+});
+
 
 /*
   Dist
@@ -154,11 +169,13 @@ gulp.task('dist', function () {
 /*
   Watch
 ---------------------------------------------*/
-gulp.task('default', gulp.parallel('browser-sync', function () {
+gulp.task('default', gulp.parallel('browser-sync', () => {
   gulp.watch(paths.srcDir + paths.assetDir + '/js/*.js', gulp.task('reload'));
   gulp.watch(paths.srcDir + '/**/*.scss', gulp.task('sass'));
   gulp.watch(paths.srcDir + '/**/*.scss', gulp.task('reload'));
   //gulp.watch(paths.srcDir + '/**/*.css', gulp.task('css'));
   gulp.watch(paths.srcDir + '/ejs/**/*.ejs', gulp.task('ejs'));
   gulp.watch(paths.srcDir + '/ejs/**/*.ejs', gulp.task('reload'));
+  gulp.watch(paths.srcDir + '/js/**/*.js', gulp.task('bundle'));
+  gulp.watch(paths.srcDir + '/js/**/*.js', gulp.task('reload'));
 }));
