@@ -6,15 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
 <body>
 
   <header class="header" id="header">
     <nav class="globalnav">
-      <ul class="globalnav__list flex -justifyCenter">
-        <li><a href="">About</a></li>
-        <li><a href="">Works</a></li>
-        <li><a href="">Contact</a></li>
+      <ul class="globalnav__list flex -justifyAround">
+        <li tab-item="home">Home</li>
+        <li tab-item="about">About</li>
+        <li tab-item="works">Works</li>
+        <li tab-item="contact">Contact</li>
       </ul>
       <!-- /.globalnav__list -->
     </nav>
@@ -23,7 +25,7 @@
   <!-- /#header.header -->
   <main class="main" id="main">
     <div class="wrap">
-      <div class="tabContens top__contents">
+      <div class="tabContents top__contents">
         <div class="top__copy">
           <h1 class="top__title">Saori N.</h1>
           <p class="bs_txt">I'm a web creator / developer.</p>
@@ -31,12 +33,66 @@
       </div>
       <!-- /.tabContents -->
 
+      <div class="tabContents about__contents">
+        <div class="contents__wrap">
+          <h2 class="heading-primary">Saori Nakamichi</h2>
+          <p>I’m a web designer / developer.</p>
+          <section class="about__sec">
+            <h3 class="heading-secondary">SKILLS</h3>
+            <p>HTML / CSS / Sass / SCSS / JavaScript / jQuery / Vanilla JS<br>
+          Web GL / three.js / WordPress / PHP / gulp / MySQL / C / Java<br>
+          Git / Linux / Heathcare systems</p>
+          </section>
+          <section class="about__sec">
+            <h3 class="heading-secondary">Community</h3>
+            <p>Shibajuku / cooen / muse academy</p>
+          </section>
+          <section class="about__sec">
+            <h3 class="heading-secondary">Site</h3>
+            <p>Tisse design / chisaめも</p>
+          </section>
+        </div>
+        <!-- /.contents__wrap -->
+      </div>
+      <!-- /.tabContents -->
+
+      <div class="tabContents works__contents">
+        <div class="contents__wrap">
+
+          <h2 class="heading-primary">Works</h2>
+          <div class="worksSlider">
+          </div>
+        </div>
+      </div>
+      <!-- /.tabContents -->
+
+      <div class="tabContents contact__contents">
+        <div class="contents__wrap">
+          <h2 class="heading-primary">Contact</h2>
+          <div class="">
+            <p>お問い合わせはこちら</p>
+            <a href="">form</a>
+            <a href="">LINE @</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.tabContents -->
+
     </div>
   </main>
   <!-- /#main.main -->
-  <footer class="footer" id="footer"></footer>
+  <footer class="footer" id="footer">
+    <ul class="snslist flex -justifyCenter">
+      <li><a href="" target="_blank" rel="noopener">twitter</a></li>
+      <li><a href="" target="_blank" rel="noopener">instagram</a></li>
+      <li><a href="" target="_blank" rel="noopener">facebook</a></li>
+    </ul>
+    <p class="copyright"><small>&copy; saori.n</small></p>
+  </footer>
   <!-- /#footer.footer -->
 
+  <script src="./assets/js/lib/TweenMax.min.js"></script>
+  <script src="./assets/js/lib/three.min.js"></script>
   <script src="./assets/js/bundle.js"></script>
 </body>
 </html>

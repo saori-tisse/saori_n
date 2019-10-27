@@ -12,4 +12,21 @@
   &.-justifyCenter{
     justify-content: center;
   }
+  &.-justifyAround{
+    justify-content: space-around;
+  }
+}
+
+.heading{
+  &-primary{
+    font-size: 3rem;
+    @include ls(200);
+    color: $color-main;
+  }
+
+  &-secondary{
+    font-size: 2rem;
+    @include ls(50);
+    +*{margin-top: 1.5rem;}
+  }
 }

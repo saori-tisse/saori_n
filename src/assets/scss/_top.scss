@@ -7,6 +7,20 @@
 // --INDEX
 //
 
+// common
+.contents{
+  &__wrap{
+    position: absolute;
+    width: 100%;
+    padding: 0 6%;
+    top: 8rem;
+    top: 80px / 1366px * 100vw;
+    left: 0;
+  }
+}
+
+// section
+
 .top{
   &__contents{
   }
@@ -24,4 +38,14 @@
     font-weight: bold;
     color: $color-main;
   }
+}
+
+
+// about
+.about{
+  &__sec{
+    margin-top: 4rem;
+    margin-top: 64px / 1920px * 100vw;
+  }
+
 }
